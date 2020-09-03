@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.11)
-project(websockets)
+project(qflowwebsockets)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 add_subdirectory(core/src)
 add_subdirectory(src)
