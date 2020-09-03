@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.12.4)
 
-project(websockets)
+project(qflowwebsockets)
 
 set(QT_MIN_VERSION "5.6.0")
 find_package(Qt5 ${QT_MIN_VERSION} CONFIG REQUIRED
@@ -27,10 +27,10 @@ file(GLOB_RECURSE INSTALL_HEADERS
     ${CMAKE_CURRENT_SOURCE_DIR}/*.h
     )
     
-add_library(websockets SHARED ${CORE_SOURCES})
-target_compile_definitions(websockets PUBLIC WEBSOCKETS_LIBRARY)
-set_target_properties(websockets PROPERTIES CXX_STANDARD 14)
-target_link_libraries(websockets
+add_library(qflowwebsockets SHARED ${CORE_SOURCES})
+target_compile_definitions(qflowwebsockets PUBLIC WEBSOCKETS_LIBRARY)
+set_target_properties(qflowwebsockets PROPERTIES CXX_STANDARD 14)
+target_link_libraries(qflowwebsockets
     QFlow::core
     Qt5::Core
     Qt5::Qml
@@ -49,16 +49,16 @@ define_property(TARGET PROPERTY QMLModuleName
     BRIEF_DOCS "Name of the module"
     FULL_DOCS "Name of the module"
     )
-set_target_properties(websockets PROPERTIES
+set_target_properties(qflowwebsockets PROPERTIES
     QMLModulePath ${CMAKE_INSTALL_PREFIX}/modules
     QMLModuleName QFlow.Websockets
     )
-set_target_properties(websockets PROPERTIES
+set_target_properties(qflowwebsockets PROPERTIES
     EXPORT_PROPERTIES "QMLModulePath;QMLModuleName"
     )
 
 set(PACKAGE_NAME "QFlowWebsockets")
-install(TARGETS websockets
+install(TARGETS qflowwebsockets
     EXPORT ${PACKAGE_NAME}Config
     RUNTIME DESTINATION ${WEBSOCKETS_INSTALL_PATH}
     ARCHIVE DESTINATION lib
