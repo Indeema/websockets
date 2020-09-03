@@ -21,11 +21,11 @@ set(CMAKE_AUTOMOC ON)
 file(GLOB_RECURSE CORE_SOURCES
     RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
+    )
+file(GLOB_RECURSE INSTALL_HEADERS
+    RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/*.h
     )
-set(INSTALL_HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/websocketworker.h 
-                    ${CMAKE_CURRENT_SOURCE_DIR}/websocketconnection.h 
-                    ${CMAKE_CURRENT_SOURCE_DIR}/websocketserver.h)
     
 add_library(websockets SHARED ${CORE_SOURCES})
 target_compile_definitions(websockets PUBLIC WEBSOCKETS_LIBRARY)
