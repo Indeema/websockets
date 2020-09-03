@@ -23,6 +23,10 @@ file(GLOB_RECURSE CORE_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/*.h
     )
+set(INSTALL_HEADERS ${CMAKE_CURRENT_SOURCE_DIR}/websocketworker.h 
+                    ${CMAKE_CURRENT_SOURCE_DIR}/websocketconnection.h 
+                    ${CMAKE_CURRENT_SOURCE_DIR}/websocketserver.h)
+    
 add_library(websockets SHARED ${CORE_SOURCES})
 target_compile_definitions(websockets PUBLIC WEBSOCKETS_LIBRARY)
 set_target_properties(websockets PROPERTIES CXX_STANDARD 14)
@@ -60,6 +64,7 @@ install(TARGETS websockets
     ARCHIVE DESTINATION lib
     COMPONENT qflow
     )
+install(FILES ${INSTALL_HEADERS} DESTINATION include/${PACKAGE_NAME} COMPONENT qflow)
 install(EXPORT ${PACKAGE_NAME}Config
     NAMESPACE QFlow::
     DESTINATION lib/cmake/${PACKAGE_NAME}
